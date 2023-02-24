@@ -8,10 +8,10 @@ glauco_90_90 <- getspec ("./glauco_90_90", ext = "txt", decimal = ".") %>%
   procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) #reads .csv files with reflectance data, 3 files per patch, 7 patches per individual
 glauco_45_25 <- getspec ("./glauco_45_25", ext = "txt", decimal = ".") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean)
 glauco_45_90 <- getspec ("./glauco_45_90", ext = "txt", decimal = ".") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) 
 
 sum_glauco<-rbind(summary(glauco_90_90), summary(glauco_45_25), summary(glauco_45_90))
@@ -31,13 +31,13 @@ colnames(bypatch)<- c("wl", "back9090","back4590", "back4525",
 explorespec (bypatch, by=3, legpos="topleft", col=palette, scale="free")
 
 palm_dorsal_90_90<- getspec ("./palm_dorsal_90_90", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) #reads .csv files with reflectance data, 3 files per patch, 7 patches per individual
 palm_dorsal_45_90<- getspec ("./palm_dorsal_45_90", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) 
 palm_dorsal_45_25<- getspec ("./palm_dorsal_45_25", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) 
 
 sum_palm_dorsal<-rbind(summary(palm_dorsal_90_90), summary(palm_dorsal_45_90), summary(palm_dorsal_45_25))
@@ -54,13 +54,13 @@ aggplot(palms_dorsal, by= 4, legend =TRUE, legpos="topleft",
          col=palette, scale="free")
 
 palm_ventral_90_90<- getspec ("./palm_ventral_90_90", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) #reads .csv files with reflectance data, 3 files per patch, 7 patches per individual
 palm_ventral_45_90<- getspec ("./palm_ventral_45_90", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) 
 palm_ventral_45_25<- getspec ("./palm_ventral_45_25", ext = "txt", decimal = ",") %>% 
-  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
+  procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies a smoothing function and sets all negative values to zero.
   aggspec(by = 3, FUN = mean) 
 
 sum_palm_ventral<-rbind(summary(palm_ventral_90_90), summary(palm_ventral_45_90), summary(palm_ventral_45_25))
