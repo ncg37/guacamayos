@@ -30,7 +30,7 @@ colnames(bypatch)<- c("wl", "back9090","back4590", "back4525",
                       "head9090","head4590", "head4525",
                       "rump9090","rump4590", "rump4525")
            
-explorespec (bypatch, by=3, legend = TRUE, legpos="topleft", col=palette, scale="free")
+explorespec (bypatch, by=3, legpos="topleft", col=palette, scale="free")
 
 palm_dorsal_90_90<- getspec ("./palm_dorsal_90_90", ext = "txt", decimal = ",") %>% 
   procspec(opt = 'smooth', span = 0.2, fixneg = 'zero') %>% #applies asmoothing function and sets all negative values to zero.
