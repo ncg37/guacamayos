@@ -1,7 +1,5 @@
 library (pavo)
 library(dplyr)
-library(tidyr)
-library(tibble)
 library(RColorBrewer) 
 
 palette<-brewer.pal(7, "Dark2")
