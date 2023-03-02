@@ -42,6 +42,16 @@ palm_dorsal_45_25<- getspec ("./palm_dorsal_45_25", ext = "txt", decimal = ",") 
 
 sum_palm_dorsal<-rbind(summary(palm_dorsal_90_90), summary(palm_dorsal_45_90), summary(palm_dorsal_45_25))
 
+avg_palm_dorsal_90_90<-summary(palm_dorsal_90_90) %>% summarize_all(mean)
+row.names(avg_palm_dorsal_90_90) <- "palm_dorsal_90_90"
+
+avg_palm_dorsal_45_90<-summary(palm_dorsal_45_90) %>% summarize_all(mean)
+row.names(avg_palm_dorsal_45_90) <- "palm_dorsal_45_90"
+
+avg_palm_dorsal_45_25<-summary(palm_dorsal_45_25) %>% summarize_all(mean)
+row.names(avg_palm_dorsal_45_25) <- "palm_dorsal_45_90"
+
+
 palms_dorsal <-cbind(palm_dorsal_90_90, palm_dorsal_45_90[,2:5], palm_dorsal_45_25[,2:5])
 
 colnames(palms_dorsal)<- c("wl", "dorsal9090","dorsal9090", "dorsal9090",
@@ -65,6 +75,15 @@ palm_ventral_45_25<- getspec ("./palm_ventral_45_25", ext = "txt", decimal = ","
 
 sum_palm_ventral<-rbind(summary(palm_ventral_90_90), summary(palm_ventral_45_90), summary(palm_ventral_45_25))
 
+avg_palm_ventral_90_90<-summary(palm_ventral_90_90) %>% summarize_all(mean)
+row.names(avg_palm_ventral_90_90) <- "palm_ventral_90_90"
+
+avg_palm_ventral_45_90<-summary(palm_ventral_45_90) %>% summarize_all(mean)
+row.names(avg_palm_ventral_45_90) <- "palm_ventral_45_90"
+
+avg_palm_ventral_45_25<-summary(palm_ventral_45_25) %>% summarize_all(mean)
+row.names(avg_palm_ventral_45_25) <- "palm_ventral_45_90"
+
 palms_ventral <-cbind(palm_ventral_90_90, palm_ventral_45_90[,2:5], palm_ventral_45_25[,2:5])
 
 colnames(palms_ventral)<- c("wl", "ventral9090","ventral9090", "ventral9090",
@@ -76,6 +95,10 @@ aggplot(palms_ventral, by= 4, legend =TRUE, legpos="topleft",
         FUN.error = function(x) sd(x) / sqrt(length(x)),
         col=palette, scale="free")
 
+
+write.csv(rbind(sum_glauco, sum_palm_dorsal, sum_palm_ventral), "summary_data_raw.csv")
+write.csv(rbind(sum_glauco, avg_palm_dorsal_90_90, avg_palm_dorsal_45_90, avg_palm_dorsal_45_25,
+                avg_palm_ventral_90_90, avg_palm_ventral_45_90, avg_palm_ventral_45_25), "summary_data_avg.csv")
 
 #Visual Models----
 
@@ -172,7 +195,7 @@ gl_v_45_25_dist <- as.data.frame (bootcoldist(gl_v_45_25, gr, n=c(1,1.9,2.9,2.5)
 gl_v_45_25_dist=gl_v_45_25_dist[c(5,9,12,14,15),]
 
 
-write.csv(rbind(sum_glauco, sum_palm_dorsal, sum_palm_ventral), "summary_data.csv")
+
 write.csv(rbind(gl_d_90_90_dist, gl_d_45_90_dist, gl_d_45_25_dist),"deltaS_dorsal.csv")
 write.csv(rbind(gl_v_90_90_dist, gl_v_45_90_dist, gl_v_45_25_dist),"deltaS_ventral.csv")
           
